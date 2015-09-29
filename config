@@ -1,0 +1,347 @@
+#BugOpts ExplainWindowPlacement On
+#SetAnimation  10  -.01 0 .01 .03 .08 .18 .3 .45 .6 .75 .85 .90 .94 .97 .99 1.0
+
+###############################################################################
+#   initialization function head                                              #
+###############################################################################
+AddToFunc InitFunction
+ +	"I"	Module FvwmPager 0 0
+# +	"I"	Module FvwmBacker
+ +	"I"	Exec gkrellm -wm -g 65x200-1+130
+
+###############################################################################
+#   restart function                                                          #
+###############################################################################
+AddToFunc RestartFunction
+ +	"I"	Module FvwmPager 0 0
+# +	"I"	Module FvwmBacker
+ +	"I"	Exec gkrellm -wm -g 65x200-1+130
+
+###############################################################################
+#   exit function                                                             #
+###############################################################################
+AddToFunc ExitFunction
++	"I"	Exec killall -9 gkrellm
+
+###############################################################################
+#   general configuration                                                     #
+###############################################################################
+# Reiherfolge der Buttons:
+# 1 3 5 7 9 0 8 6 4 2
+
+AddToDecor Default
+ + TitleStyle LeftJustified
+ + ButtonStyle Reset
+ + ButtonStyle 1 Vector	8	30x30@3 70x30@3 70x35@3 30x35@3 30x30@3 30x65@3 55x65@3 55x30@3
+ + ButtonStyle 3 Vector	5	30x30@3 60x30@3 60x35@3 30x35@3 30x30@3
+ + ButtonStyle 6 Vector	6	30x70@3 70x70@3 70x70@3 70x65@3 70x65@3 30x65@3
+ + ButtonStyle 4 Vector	7	30x30@3 30x70@3 70x70@3 70x30@3 30x30@3 30x35@3 70x35@3
+ + ButtonStyle 2 Vector	34	30x30@3 35x30@3 35x30@3 70x65@3 70x65@3 70x70@3 70x70@3 30x30@3 \
+				30x30@3 30x35@3 30x35@3 65x70@3 65x70@3 70x70@3 \
+				70x70@3 70x80@3 70x80@2 70x90@2 70x90@2 30x90@2 30x90@2 30x70@2 \
+				30x70@3 30x65@3 30x65@3 65x30@3 65x30@3 70x30@3 70x30@3 30x70@3 \
+				30x70@3 35x70@3 35x70@3 70x35@3 70x35@3 70x30@3
+
+DeskTopSize 2x5
+EdgeResistance 250 10
+EdgeScroll 0 0
+ClickTime 800
+ColormapFocus FollowsMouse
+OpaqueMoveSize 100
+
+###############################################################################
+#   paths specific to fvwm2                                                   #
+###############################################################################
+ModulePath /usr/lib/fvwm/2.6.5
+PixmapPath /usr/X11R6/include/X11/3dpixmaps/small:/usr/X11R6/include/X11/susexpm/small:/usr/X11R6/include/X11/susexpm/normal:/usr/X11R6/include/X11/susexpm/mini:/usr/X11R6/include/X11/3dpixmaps/normal:/usr/X11R6/include/X11/pixmaps:/usr/share/fvwm/images/16x16-kde/:/usr/share/pixmaps
+IconPath /usr/X11R6/include/X11/bitmaps:/usr/include/X11/pixmaps/
+
+
+###############################################################################
+#   colors and fonts                                                          #
+###############################################################################
+# Text and background color for the title bar of the selected window
+HilightColor 	LightGoldenrod Black
+
+# Menu colors and font
+#MenuStyle "WindowList" SelectOnRelease off
+MenuStyle	LightGoldenrod Grey20 SteelBlue3 -adobe-helvetica-medium-r-*-*-12-*-*-*-*-*-*-* fvwm
+IconFont        -misc-fixed-medium-r-normal-*-10-*-75-75-c-60-iso8859-1
+WindowFont	-misc-fixed-medium-r-normal--10-*-*-*-c-60-iso10646-1
+
+#IconBox 0 -70 -1 -1
+# Groesse der IconBox
+Style "*" IconBox -80 240 -1 -1
+
+# value to make frames visible when dragging or resizing a window
+XORvalue 255
+
+###############################################################################
+#   style options for modules and programs                                    #
+###############################################################################
+Style  "FvwmPager"	NoTitle, Sticky, WindowListSkip
+Style  "FvwmWinList"	NoTitle, WindowListSkip
+Style  "FvwmWinList"	NakedTransient
+Style  "xterm*"		Icon xterm.xpm, CenterPlacement
+Style  "xconsole"	Icon clipboard_3d.xpm
+Style  "Xman"		Icon xman3d.xpm
+Style  "xv*"		Icon xv.color.xpm 
+Style  "gkrellm*"	NoTitle, Sticky, WindowListSkip
+#Style  "conky*"		NoTitle, Sticky, WindowListSkip, Background
+Style  "firefox"	CenterPlacement
+Style  "*"		BorderWidth 2, HandleWidth 2
+Style  "*"		BackColor Black
+Style  "*"		ForeColor DarkGrey
+Style  "*"		SloppyFocus
+Style  "*"		DecorateTransient
+Style  "*"		IconBox +55 +85 +130 +480
+Style  "*"		StickyIcon
+Style  "*"		MinOverlapPercentPlacement
+Style  "*"		MWMBorder 
+Style "*"		NoIconPosition
+#Style "psi"		Window
+#Style  "*"                NoPPosition
+#Style  "*"                MWMDecor
+#Style  "*"                HintOverride
+#Style  "*"                MWMFunctions		// OpenOffice hat kein FullScreen mehr!!!!!
+# Kein Icon setzen
+#Style "*" NoIcon
+
+# Icon Placement hint ignorieren
+
+
+###############################################################################
+#   pager                                                                     #
+###############################################################################
+*FvwmPagerRows 		1
+*FvwmPagerColumns 	1
+*FvwmPagerGeometry	60x126-0+0
+*FvwmPagerFore		Black
+*FvwmPagerBack		grey67
+*FvwmPagerHilight	grey50
+*FvwmPagerFont		none
+*FvwmPagerSmallFont	-misc-fixed-medium-r-normal--7-70-75-75-c-50-iso8859-1
+*FvwmPagerBack #908090
+*FvwmPagerFore #484048
+*FvwmPagerFont -adobe-helvetica-bold-r-*-*-10-*-*-*-*-*-*-*
+# turn off desktop names for swallowing in above button bar example:
+*FvwmPagerFont none
+*FvwmPagerHilight #cab3ca
+*FvwmPagerLabel 0 Misc
+*FvwmPagerLabel 1 Maker
+*FvwmPagerLabel 2 Mail
+*FvwmPagerLabel 3 Matlab
+*FvwmPagerSmallFont 5x8
+*FvwmPagerBalloons            All
+*FvwmPagerBalloonBack         Yellow
+*FvwmPagerBalloonFore         Black
+#*FvwmPagerBalloonFont         lucidasanstypewriter-12
+*FvwmPagerBalloonFont         -misc-fixed-medium-r-normal--11-*-*-*-c-60-iso10646-1
+*FvwmPagerBalloonYOffset      +2
+*FvwmPagerBalloonBorderWidth  1
+*FvwmPagerBalloonBorderColor  Black
+
+
+###############################################################################
+#  Set Up Backgrounds for different desktops.                                 #
+###############################################################################
+*FvwmBacker: Command (Desk 0, Page 0 0) Exec fvwm-root ~/download/bg1.xpm
+*FvwmBacker: Command (Desk 0, Page 1 0) Exec fvwm-root ~/download/bg2.xpm
+*FvwmBacker: Command (Desk 0, Page 0 1) Exec fvwm-root ~/download/bg3.xpm
+*FvwmBacker: Command (Desk 0, Page 1 1) Exec fvwm-root ~/download/bg4.xpm
+
+ Just choose colors and a fonts
+*FvwmIdentBack	MidnightBlue
+*FvwmIdentFore	Yellow
+*FvwmIdentFont	-misc-fixed-medium-r-normal--13-120-75-75-c-80-iso8859-1
+
+###############################################################################
+#   key bindings                                                              #
+###############################################################################
+Key	F1	A	M	Menu	workpopup
+Key	F4	A	M	Close
+Key	F5	A	M	Maximize
+Key	F6	A	M	Maximize 0 100
+Key	F7	A	M	Maximize 100 0
+Key	F10	A	M	Delete
+Key	F12	A	M	Restart fvwm2
+
+Key	Down	A	SM	GotoPage 0p 1p
+Key	Up		A	SM	GotoPage 0p -1p
+Key	Right	A	SM	GotoPage 1p 0p
+Key	Left	A	SM	GotoPage -1p 0p
+
+Key	1	A	CM	GotoPage 0 0
+Key	2	A	CM	GotoPage 1 0
+Key	3	A	CM	GotoPage 0 1
+Key	4	A	CM	GotoPage 1 1
+Key	5	A	CM	GotoPage 0 2
+Key	6	A	CM	GotoPage 1 2
+Key	7	A	CM	GotoPage 0 3
+Key	8	A	CM	GotoPage 1 3
+Key	9	A	CM	GotoPage 0 4
+Key	0	A	CM	GotoPage 1 4
+
+Key	a	A	CM	exec aterm -ls -bg black -fg white
+Key	c	A	CM	exec chromium
+Key	f	A	CM	exec firefox
+Key	g	A	CM	exec gvim
+Key	i	A	CM	exec /usr/bin/licq
+Key	k	A	CM	exec krdc
+Key	l	A	CM	exec /usr/bin/xlock
+Key	o	A	CM	exec /usr/bin/opera
+Key	p	A	CM	exec /usr/bin/pidgin
+Key	m	A	CM	exec /usr/bin/icedove
+Key	s	A	CM	exec /usr/bin/skype
+Key	t	A	CM	exec thunderbird
+Key	x	A	CM	exec xterm -ls -bg black -fg white
+
+###############################################################################
+#   mouse bindings                                                            #
+###############################################################################
+# Button-Reihenfolge in der Titelleiste: 1 3 5 7 9 0 8 6 4 2
+Mouse	0	1	A	Menu	WindowOps	Nop
+Mouse	0	1	D	Menu	WindowOps	Delete
+Mouse	0	3	A	Stick
+Mouse	0	6	A	Iconify
+Mouse	0	4	A	Maximize
+Mouse	0	2	A	Close
+
+# Icons
+Mouse	1	I	A	Iconify
+
+# General Menue
+Mouse	1	R	A	Menu	workpopup	Nop
+Mouse	2	R	A	Module	FvwmWinList	Transient
+Mouse	3	R	A	Menu	allpopup	Nop
+
+###############################################################################
+# WindowOps
+###############################################################################
+AddToMenu WindowOps \
+	"Fenstermenü        "	Title
+ +	"&Verschieben       "	Move 
+ +	"Minimieren         "	Iconify 
+ +	"Raise         "	Raise
+ +	""	Nop
+ +	"S&chließen         "	Close 
+ +	"S&chließen         "	Delete 
+ +	"&Kill              "	Destroy  
+
+###############################################################################
+# office
+###############################################################################
+AddToMenu office "Office Tools"	Title
+ +	"Open Office%ooffice.xpm%"			Exec ~/.openoffice/1.1.2/soffice
+ +	"LyX%small.Drawing.xpm%"			Exec lyx
+ +	"Kile%small.Drawing.xpm%"			Exec kile
+ +	"dia Shape%dia1.xpm%"				Exec dia
+ +	"Gaphor UML%dia1.xpm%"				Exec gaphor
+ +	"Kivio%small.Drawing.xpm%"			Exec kivio
+ +	"VM Ware%small.Drawing.xpm%"			Exec vmware
+
+###############################################################################
+# viewer
+###############################################################################
+AddToMenu viewer "Viewer Tools"	Title
+ +	"Xpdf%viewer.xpm%"				Exec xpdf
+ +	"Xdvi%viewer.xpm%"				Exec xdvi
+ +	"GV%ghostview.xpm%"				Exec gv
+ +	"GS%small.Drawing.xpm%"				Exec gs
+ +	"Evince%small.Drawing.xpm%"			Exec evince
+ +	""	Nop
+ +	"display%display1.xpm%"				Exec display
+ +	"xv%mini.xv.xpm%"				Exec xv
+ +	"Gimp%mini.gimp.xpm%"				Exec gimp
+ +	""	Nop
+ +	"vlc"						Exec vlc
+
+###############################################################################
+# net
+###############################################################################
+AddToMenu net "Web Tools"	Title
+ +	"&Mozilla Firefox%mozilla.mini.xpm%"	Exec firefox
+ +	"&Thunderbird%thunderbird_16x16.xpm%"		Exec thunderbird
+ +	"Opera"						Exec opera
+ +	""	Nop
+ +	"Sylpheed"					Exec sylpheed-claws-gtk2
+ +	"PSI"						Exec psi
+ +	"Pidgin"					Exec pidgin
+ +	"Licq"						Exec licq
+ +	"Skype"						Exec skype
+ +	"Seahorse GPG%small.Drawing.xpm%"		Exec ssh neumann seahorse
+ +	"Azureus"					Exec azureus
+ +	"RealPlayer"					Exec /home/markus/download/RealPlayer/realplay
+ +	""	Nop
+ +	"wmwave%small.meter_3d.xpm%"	Exec wmwave
+ +	"wavemon eth1%small.meter_3d.xpm%"	Exec xterm -T 'wavemon eth1' -e wavemon -i eth1
+ +	"wavemon wlp2s2%small.meter_3d.xpm%"	Exec xterm -T 'wavemon wlp2s2' -e wavemon -i wlp2s2
+
+###############################################################################
+# misc
+###############################################################################
+AddToMenu misc "Misc Tools"	Title
+ +	"Konqueror%small.Drawing.xpm%"	Exec konqueror /home/markus
+ +	"nautilus"			Exec /usr/bin/nautilus --no-desktop /home/markus
+ +	"Update Manager"		Exec xterm -e sudo update-manager
+ +	""	Nop
+ +	"To&p%small.meter_3d.xpm%"	Exec xterm -T Top -n Top -e top
+ +	"Xm&an%mini.xman.xpm%"	Exec xman
+
+###############################################################################
+# prog
+###############################################################################
+AddToMenu prog "Programming Tools"	Title
+ +	"gvim%vim-16.xpm%"	Exec gvim
+ +	"Eclipse%eclipse_16x16.xpm%"	Exec ~/coding/shell/st_ecl
+ +	"JBuilder X"		Exec /usr/local/share/JBuilderX/bin/jbuilder
+
+###############################################################################
+# media
+###############################################################################
+AddToMenu media "Media Tools"	Title
+ +	"xmms%xmms.xpm%"	Exec xmms
+ +	"xine%xmms.xpm%"	Exec xine
+
+###############################################################################
+# games
+###############################################################################
+AddToMenu games "Games"	Title
+ +	"xskat%small.Viewer.xpm%"		Exec xskat
+ +	"LineBreakout2%small.Viewer.xpm%"	Exec lbreakout2
+ +	"crack-Attack%small.Viewer.xpm%"	Exec crack-attack
+ +	"airstrike%small.Viewer.xpm%"		Exec airstrike
+ +	"superTUX"				Exec supertux
+
+###############################################################################
+# Mainmenu
+###############################################################################
+AddToMenu workpopup "Markus, einstein.esukram.org"	Title
+
+ +	"&XTerm%mini.xterm.xpm%"		Exec xterm -ls -bg black -fg white
+ +	"&ATerm%mini.xterm.xpm%"		Exec aterm -ls -bg black -fg white
+ +	"&rxvTerm%mini.xterm.xpm%"		Exec rxvt -fn 6x13 -ls -fg black -bg white
+ +	"xconsole"				Exec xconsole
+ +	"Lock Screen%mini.xlock.xpm%"		Exec xlock
+ +	""	Nop
+ +	"Web Tools%small.window3d.xpm%"		Popup net
+ +	"Office Tools%small.window3d.xpm%"	Popup office
+ +	"Programming Tools%small.window3d.xpm%"	Popup prog
+ +	"Viewer%viewer.xpm%"			Popup viewer
+ +	"&Games%small.window3d.xpm%"		Popup games
+ +	"Media Tools%small.window3d.xpm%"	Popup media
+ +	"Misc Tools%small.window3d.xpm%"	Popup misc
+ +	""	Nop
+ +	"Fvwm2 &Restart%small.restart_suse_3d.xpm%"	Restart fvwm2
+ +	"&Quit%mini.exit.xpm%"	Quit
+
+###############################################################################
+# Verbindungen
+###############################################################################
+AddToMenu allpopup "Root-Verbindungen"	Title
+ +	"&root Shell%mini.telnet.xpm%"	Exec xterm -T root@einstein -fg green -bg black -e su -
+ +	""	Nop
+ +	"&esukram.org%small.Shell.xpm%"	Exec xterm -T esukram.org -bg black -fg white -e ssh esukram.org
+ +	"&he2m.de%small.Shell.xpm%"	Exec xterm -T he2m.de -bg black -fg white -e ssh he2m.de
+ +	"&base.he2m.de%small.Shell.xpm%"	Exec xterm -T base.he2m.de -bg black -fg white -e ssh base.he2m.de
+ +	"&ns1.he2m.de%small.Shell.xpm%"	Exec xterm -T ns1.he2m.de -bg black -fg white -e ssh ns1.he2m.de
